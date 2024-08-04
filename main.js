@@ -47,8 +47,8 @@ function init() {
     scene.add(light);
     scene.add(light2);
 
-    light.position.set(5,3,5)
-    light2.position.set(-5,3,5)
+    light.position.set(2,1,5)
+    light2.position.set(-2,1,5)
 
 
 
