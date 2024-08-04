@@ -1,4 +1,6 @@
 import * as THREE from 'three';
+// import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
 
 let scene, camera, renderer, cube;
 
@@ -9,13 +11,13 @@ const step = 10;
 function init() {
     // Scene
     scene = new THREE.Scene();
+    scene.background = new THREE.Color( 0, 0, 0 );
+
     
     // Camera
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 5;
-    camera.position.x = 0;
-    camera.position.y = 1;
-    camera.rotateX(-0.5);
+    camera.position.set(0, 5, 10);
+    camera.rotateX(-0.5)
 
     // Renderer
     renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -27,19 +29,26 @@ function init() {
     const material = new THREE.MeshPhongMaterial({ color: 0xffffff });
     cube = new THREE.Mesh(geometry, material);
 
+    // const loader = new GLTFLoader();
+
+    // loader.load( '/objects/cuvette.glb', function ( gltf ) {
+
+    //     scene.add( gltf.scene );
+    
+    // }, undefined, function ( error ) {
+    
+    //     console.error( error );
+    
+    // } );
+
     const light = new THREE.PointLight(0x00ff00)
     const light2 = new THREE.PointLight(0xff0000)
     scene.add(cube);
     scene.add(light);
     scene.add(light2);
 
-    light.position.z = 5;
-    light.position.y = 3;
-    light.position.x = 5;
-
-    light2.position.z = 5;
-    light2.position.x = -5;
-    light2.position.y = 3;
+    light.position.set(5,3,5)
+    light2.position.set(-5,3,5)
 
 
 
@@ -71,9 +80,7 @@ function onKeyDown(event) {
     } else if (key === ' ') {
         rotate = !rotate;
     } else if (key === 'r') {
-        camera.position.z = 5;
-        camera.position.x = 0;
-        camera.position.y = 1;
+        camera.position.set(0, 5, 10);
     }
 }
 
