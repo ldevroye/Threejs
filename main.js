@@ -26,13 +26,13 @@ function init() {
     // Add a cube to the scene
     const geometry = new THREE.BoxGeometry();
     const material = new THREE.MeshPhongMaterial({ color: 0xffffff });
-    //cube = new THREE.Mesh(geometry, material);
+    // cube = new THREE.Mesh(geometry, material);
 
     cube = new GLTFLoader();
 
     cube.load( 'objects/cuvette.glb', function ( gltf ) {
 
-        scene.add( gltf.scene );
+        scene.add(gltf.scene);
 
     }, undefined, function ( error ) {
 
@@ -40,8 +40,8 @@ function init() {
 
     } );
 
-    const light = new THREE.PointLight(0x00ff00)
-    const light2 = new THREE.PointLight(0xff0000)
+    const light = new THREE.SpotLight(0x00ff00)
+    const light2 = new THREE.AmbientLight(0xff0000)
     scene.add(cube);
     scene.add(light);
     scene.add(light2);
