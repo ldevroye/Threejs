@@ -1,10 +1,9 @@
 import * as THREE from 'three';
-// import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 let scene, camera, renderer, cube;
 
-var rotate = true;
+var rotate = false;
 
 const step = 10;
 
@@ -27,19 +26,19 @@ function init() {
     // Add a cube to the scene
     const geometry = new THREE.BoxGeometry();
     const material = new THREE.MeshPhongMaterial({ color: 0xffffff });
-    cube = new THREE.Mesh(geometry, material);
+    //cube = new THREE.Mesh(geometry, material);
 
-    // const loader = new GLTFLoader();
+    cube = new GLTFLoader();
 
-    // loader.load( '/objects/cuvette.glb', function ( gltf ) {
+    cube.load( 'objects/cuvette.glb', function ( gltf ) {
 
-    //     scene.add( gltf.scene );
-    
-    // }, undefined, function ( error ) {
-    
-    //     console.error( error );
-    
-    // } );
+        scene.add( gltf.scene );
+
+    }, undefined, function ( error ) {
+
+        console.error( error );
+
+    } );
 
     const light = new THREE.PointLight(0x00ff00)
     const light2 = new THREE.PointLight(0xff0000)
