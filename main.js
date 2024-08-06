@@ -26,13 +26,15 @@ function init() {
     // Add a cube to the scene
     const geometry = new THREE.BoxGeometry();
     const material = new THREE.MeshPhongMaterial({ color: 0xffffff });
-    // cube = new THREE.Mesh(geometry, material);
+    //cube = new THREE.Mesh(geometry, material);
 
-    cube = new GLTFLoader();
+    const Loader = new GLTFLoader();
 
-    cube.load( 'objects/cuvette.glb', function ( gltf ) {
+    Loader.load( 'objects/cuvette.glb', function ( gltf ) {
 
-        scene.add(gltf.scene);
+        cube = gltf.scene;
+        scene.add(cube);
+
 
     }, undefined, function ( error ) {
 
@@ -40,17 +42,18 @@ function init() {
 
     } );
 
-    const light = new THREE.SpotLight(0x00ff00)
-    const light2 = new THREE.AmbientLight(0xff0000)
-    scene.add(cube);
+
+    const light = new THREE.SpotLight(0xbadd1e);
+    light.position.set(-2,1,5);
+    const helper = new THREE.SpotLightHelper(light, 0xffffff);
     scene.add(light);
+    scene.add(helper);
+
+    const light2 = new THREE.SpotLight(0x00ff00);
+    light2.position.set(2,1,10);
+    const helper2 = new THREE.SpotLightHelper(light2, 0xffffff);
     scene.add(light2);
-
-    light.position.set(2,1,5)
-    light2.position.set(-2,1,5)
-
-
-
+    scene.add(helper2);
 
 
     // Handle window resize
@@ -79,7 +82,7 @@ function onKeyDown(event) {
     } else if (key === ' ') {
         rotate = !rotate;
     } else if (key === 'r') {
-        camera.position.set(0, 5, 10);
+        cube.position.set(0, 0, 0);
     }
 }
 
@@ -88,7 +91,7 @@ function onVertical(key) {
 
     // Simulate scroll
     let move = scrollStep > 0 ? 1 : -1;
-    camera.position.y -= move * 0.1;
+    cube.position.y += move * 0.1;
 }
 
 function onHorizontal(key) {
@@ -96,7 +99,7 @@ function onHorizontal(key) {
 
     // Simulate scroll
     let move = scrollStep > 0 ? 1 : -1;
-    camera.position.x -= move * 0.1;
+    cube.position.x += move * 0.1;
 }
 
 function animate() {
