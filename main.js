@@ -30,7 +30,7 @@ function init() {
 
     const Loader = new GLTFLoader();
 
-    Loader.load( './public/objects/cuvette.glb', function ( gltf ) {
+    Loader.load( './models/cuvette.glb', function ( gltf ) {
 
         cube = gltf.scene;
         scene.add(cube);
