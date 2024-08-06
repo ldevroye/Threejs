@@ -30,11 +30,10 @@ function init() {
 
     const Loader = new GLTFLoader();
 
-    Loader.load( './models/cuvette.glb', function ( gltf ) {
+    Loader.load( './models/troll/zandalaritrollmale.gltf', function ( gltf ) {
 
         cube = gltf.scene;
         scene.add(cube);
-
 
     }, undefined, function ( error ) {
 
@@ -50,7 +49,7 @@ function init() {
     scene.add(helper);
 
     const light2 = new THREE.SpotLight(0x00ff00);
-    light2.position.set(2,1,10);
+    light2.position.set(2,1,5);
     const helper2 = new THREE.SpotLightHelper(light2, 0xffffff);
     scene.add(light2);
     scene.add(helper2);
