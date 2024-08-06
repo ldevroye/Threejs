@@ -43,13 +43,13 @@ function init() {
     const light = new THREE.AmbientLight(0xffffff);
     scene.add(light);
 
-    const sportlight = new THREE.SpotLight(0x00ff00,40 ,5000);
+    const sportlight = new THREE.SpotLight(0x00ff00,4 ,5000);
     sportlight.position.set(2,0,4);
     const spotLightHelper = new THREE.SpotLightHelper(sportlight, 0x222222);
     scene.add(sportlight);
     scene.add(spotLightHelper);
 
-    const sportlight2 = new THREE.SpotLight(0xff00ff, 40 ,5000);
+    const sportlight2 = new THREE.SpotLight(0xff00ff, 4 ,5000);
     sportlight2.position.set(-2,0,5);
     const spotLightHelper2 = new THREE.SpotLightHelper(sportlight2, 0x222222);
     scene.add(sportlight2);
