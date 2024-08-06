@@ -42,7 +42,7 @@ function init() {
     } );
 
 
-    const light = new THREE.SpotLight(0xbadd1e);
+    const light = new THREE.SpotLight(0xffffff);//0xbadd1e);
     light.position.set(-2,1,5);
     const helper = new THREE.SpotLightHelper(light, 0xffffff);
     scene.add(light);
