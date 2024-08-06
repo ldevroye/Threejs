@@ -46,13 +46,13 @@ function init() {
     light.position.set(-2,1,5);
     const helper = new THREE.SpotLightHelper(light, 0xffffff);
     scene.add(light);
-    scene.add(helper);
+    // scene.add(helper);
 
     const light2 = new THREE.SpotLight(0x00ff00);
     light2.position.set(2,1,5);
     const helper2 = new THREE.SpotLightHelper(light2, 0xffffff);
     scene.add(light2);
-    scene.add(helper2);
+    // scene.add(helper2);
 
 
     // Handle window resize
