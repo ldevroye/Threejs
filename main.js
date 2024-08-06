@@ -10,12 +10,11 @@ const step = 10;
 function init() {
     // Scene
     scene = new THREE.Scene();
-    scene.background = new THREE.Color( 0, 0, 0 );
+    scene.background = new THREE.Color(0x555555);
 
-    
     // Camera
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 5, 10);
+    camera.position.set(0, 3, 5);
     camera.rotateX(-0.5)
 
     // Renderer
@@ -23,10 +22,9 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
-    // Add a cube to the scene
-    const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshPhongMaterial({ color: 0xffffff });
-    //cube = new THREE.Mesh(geometry, material);
+    // const geometry = new THREE.BoxGeometry();
+    // const material = new THREE.MeshPhongMaterial({ color: 0xffffff });
+    // cube = new THREE.Mesh(geometry, material);
 
     const Loader = new GLTFLoader();
 
@@ -42,17 +40,20 @@ function init() {
     } );
 
 
-    const light = new THREE.SpotLight(0xffffff);//0xbadd1e);
-    light.position.set(-2,1,5);
-    const helper = new THREE.SpotLightHelper(light, 0xffffff);
+    const light = new THREE.AmbientLight(0xffffff);
     scene.add(light);
-    // scene.add(helper);
 
-    const light2 = new THREE.SpotLight(0xffffff);
-    light2.position.set(2,1,5);
-    const helper2 = new THREE.SpotLightHelper(light2, 0xffffff);
-    scene.add(light2);
-    // scene.add(helper2);
+    const sportlight = new THREE.SpotLight(0x00ff00,40 ,5000);
+    sportlight.position.set(2,0,4);
+    const spotLightHelper = new THREE.SpotLightHelper(sportlight, 0x222222);
+    scene.add(sportlight);
+    scene.add(spotLightHelper);
+
+    const sportlight2 = new THREE.SpotLight(0xff00ff, 40 ,5000);
+    sportlight2.position.set(-2,0,5);
+    const spotLightHelper2 = new THREE.SpotLightHelper(sportlight2, 0x222222);
+    scene.add(sportlight2);
+    scene.add(spotLightHelper2);
 
 
     // Handle window resize
